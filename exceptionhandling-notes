@@ -1,0 +1,111 @@
+### Debugging
+
+A debugger, unfortunately, isn’t something that can magically reveal all the problems or “bugs” in our code. 
+Debugging means to run your code step by step in a debugging tool like Visual Studio, to find the exact point
+where you made a programming mistake. You then understand what corrections you need to make in your code, 
+and debugging tools often allow you to make temporary changes so you can continue running the program.
+
+Using a debugger effectively is also a skill that takes time and practice to learn but is ultimately a 
+fundamental task for every software developer.
+Running an app within a debugger, also called debugging mode, means that the debugger actively monitors 
+everything that’s happening as the program runs. It also allows you to pause the app at any point to examine
+its state, and to then step through your code line by line to watch every detail as it happens.
+
+In Visual Studio, you enter debugging mode by using F5 (or the Debug > Start Debugging menu command or the
+Start Debugging button Start Debugging in the Debug Toolbar). If any exceptions occur, Visual Studio’s 
+Exception Helper takes you to the exact point where the exception occurred and provides other helpful 
+information. For more information on how to handle exceptions in your code, see Debugging techniques and tools.
+When you find the region of code with the problem, use the debugger to investigate. To find the cause of a 
+problem, inspect the problem code while running your app in the debugger:
+
+Inspect variables and check whether they contain the type of values that they should contain. If you find 
+a bad value, find out where the bad value was set (to find where the value was set, you might need to 
+either restart the debugger, look at the call stack, or both).
+
+Check whether your application is executing the code that you expect. (For example, in the sample application,
+we expected the code for the switch statement to set the galaxy type to Irregular, but the app skipped the
+code due to the typo.
+
+### Try/Catch Blocks and Exception Handling
+
+Place any code statements that might raise or throw an exception in a try block, and place statements used to 
+handle the exception or exceptions in one or more catch blocks below the try block. Each catch block includes 
+the exception type and can contain additional statements needed to handle that exception type.
+
+In the following example, a StreamReader opens a file called data.txt and retrieves a line from the file. Since
+the code might throw any of three exceptions, it's placed in a try block. Three catch blocks catch the exceptions 
+and handle them by displaying the results to the console.
+
+A try statement specifies a code block subject to error-handling or cleanup code.
+The try block must be followed by a catch block, a finally block, or both. The
+catch block executes when an error occurs in the try block. The finally block exe‐
+158 | Chapter 4: Advanced C#
+cutes after execution leaves the try block (or if present, the catch block), to per‐
+form cleanup code, whether or not an error occurred.
+A catch block has access to an Exception object that contains information about
+the error. You use a catch block to either compensate for the error or rethrow the
+exception. You rethrow an exception if you merely want to log the problem, or if
+you want to rethrow a new, higher-level exception type.
+A finally block adds determinism to your program: the CLR endeavors to always
+execute it. It’s useful for cleanup tasks such as closing network connections.
+The finally Block
+A finally block always executes—whether or not an exception is thrown and
+whether or not the try block runs to completion. finally blocks are typically used
+for cleanup code.
+A finally block executes either:
+• After a catch block finishes
+• After control leaves the try block because of a jump statement (e.g., return or
+goto)
+• After the try block ends
+The only things that can defeat a finally block are an infinite loop, or the process
+ending abruptly.
+A finally block helps add determinism to a program. In the following example, the
+file that we open always gets closed, regardless of whether:
+• The try block finishes normally.
+• Execution returns early because the file is empty (EndOfStream).
+• An IOException is thrown while reading the file.
+static void ReadFile()
+{
+ StreamReader reader = null; // In System.IO namespace
+ try
+ {
+ reader = File.OpenText ("file.txt");
+ if (reader.EndOfStream) return;
+ Console.WriteLine (reader.ReadToEnd());
+ }
+ finally
+ {
+ if (reader != null) reader.Dispose();
+ }
+}
+
+Common Exception Types
+The following exception types are used widely throughout the CLR and .NET
+Framework. You can throw these yourself or use them as base classes for deriving
+custom exception types.
+Advanced
+C#
+try Statements and Exceptions 
+System.ArgumentException
+Thrown when a function is called with a bogus argument. This generally indi‐
+cates a program bug.
+System.ArgumentNullException
+Subclass of ArgumentException that’s thrown when a function argument is
+(unexpectedly) null.
+System.ArgumentOutOfRangeException
+Subclass of ArgumentException that’s thrown when a (usually numeric) argu‐
+ment is too big or too small. For example, this is thrown when passing a nega‐
+tive number into a function that accepts only positive values.
+System.InvalidOperationException
+Thrown when the state of an object is unsuitable for a method to successfully
+execute, regardless of any particular argument values. Examples include read‐
+ing an unopened file or getting the next element from an enumerator where
+the underlying list has been modified partway through the iteration.
+System.NotSupportedException
+Thrown to indicate that a particular functionality is not supported. A good
+example is calling the Add method on a collection for which IsReadOnly
+returns true.
+System.NotImplementedException
+Thrown to indicate that a function has not yet been implemented.
+System.ObjectDisposedException
+Thrown when the object upon which the function is called has been disposed
