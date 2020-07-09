@@ -1,0 +1,38 @@
+### Classes
+The class keyword is preceded by the access level. Because public is used in this case, anyone can create 
+instances of this class. The name of the class follows the class keyword. The name of the class must be 
+a valid.
+Classes fully support inheritance, a fundamental characteristic of object-oriented programming. 
+When you create a class, you can inherit from any other interface or class that is not defined as sealed,
+and other classes can inherit from your class and override class virtual methods.# identifier name. The
+remainder of the definition is the class body, where the behavior and 
+data are defined. Fields, properties, methods, and events on a class are collectively referred to as
+class members
+
+###Properties overview
+Properties enable a class to expose a public way of getting and setting values, while hiding
+implementation or verification code.
+
+A get property accessor is used to return the property value, and a set property accessor is used to assign
+a new value. These accessors can have different access levels. For more information, see Restricting 
+Accessor Accessibility.
+
+The value keyword is used to define the value being assigned by the set accessor.
+
+Properties can be read-write (they have both a get and a set accessor), read-only (they have a get accessor 
+but no set accessor), or write-only (they have a set accessor, but no get accessor). Write-only properties
+are rare and are most commonly used to restrict access to sensitive data.
+
+Simple properties that require no custom accessor code can be implemented either as expression body 
+definitions or as auto-implemented properties.
+
+##Auto-implemented properties
+In some cases, property get and set accessors just assign a value to or retrieve a value from a backing
+field without including any additional logic. By using auto-implemented properties, you can simplify your 
+code while having the C# compiler transparently provide the backing field for you.
+
+If a property has both a get and a set accessor, both must be auto-implemented. You define an auto-implemented
+property by using the get and set keywords without providing any implementation. The following example repeats 
+the previous one, except that Name and Price are auto-implemented properties. Note that the example also
+removes the parameterized constructor, so that SaleItem objects are now initialized with a call to the
+parameterless constructor and an object initializer.
