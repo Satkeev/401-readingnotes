@@ -1,0 +1,44 @@
+###The HTTP Request Lifecycle
+
+I have been interviewing for jobs recently, and as most devs know, the breadth and depth of questions you
+can expect to be asked during an interview is pretty much immeasurable. With that in mind, I have been
+probing recruiters on what I can expect to be asked during technical rounds. Maybe it is the mark of
+a weak dev, but I find it hard to maintain all the possible categories of questions I can expect straight
+in my head, let alone the questions themselves. I tend to forget things under pressure, like that | in bash
+is for processes/programs and > is generally for files. In service of wanting to retain the information better
+and force myself to write, I have decided to start posting walkthroughs of what I brush up on. I tend to require
+at least 3 sources to get a complete, correct, and well-written explanation of a topic. I would like to
+consolidate that for other people.
+This week, I went over the HTTP request lifecycle. This is a pretty broad overview, and it is for a simple HTTP 1.1
+request, not a persistent connection, but it could act as a good jumping-off point for HTTP/2 and persistent 
+connection requests. I will not cover too much about the various HTTP methods because that could be a post on its own,
+and because they are close enough to many developers’ workflow that the reader could probably recite the basics already.
+
+###Local Processing
+Depending on how in depth you want to get, much can happen during this step depending on the application 
+making the request. I am going to proceed on the understanding this request is being made by a browser,
+as opposed to cURL, an API client like Postman, or some other app.
+Your browser extracts the "scheme"/protocol (we have established
+that this will be HTTP), host (www.example.com),
+and optional port number, resource path, and query strings that are specified in the form
+Now that the browser has the intended hostname for the request, it needs to resolve an IP address1.
+The browser will then look through its own cache of recently requested URLs, the operating system’s cache 
+of recent queries, your router’s cache, and your DNS cache.
+
+###Resolve an IP
+Like the processing done locally, resolving an IP from a "DNS server"2 is a sequence that includes many steps,
+and includes failovers if the first request fails to return an address.
+If the cache lookup fails (we will assume it does), your browser fires off a DNS request using UDP3. The DNS reques
+t contains the preconfigured IP for your DNS server and your return IP in its header. The hostname for which you 
+are trying to resolve an IP is in the request’s "Question" section. UDP is a lightweight protocol, but the tradeoff
+is that it offers no guarantees in terms of delivery, and there is no acknowledgement other than
+a response being sent and received.
+
+Your request will now have to travel many network devices to reach its target DNS server. Whenever the packet hits
+a piece of networking equipment, the device uses a routing table to determine which other device it is
+connected to that is most likely situated along the shortest path to the destination.4
+Once your request arrives at your configured DNS server, the server looks for the address associated with 
+the requested hostname. If it finds one, it sends a response. If, on the other hand, the DNS server you have
+targeted cannot locate the given hostname, it passes the request along to another DNS server it is configured
+to defer to. This happens recursively until the address is found, or an "authoritative" nameserver is hit.
+If an address for the given domain cannot be resolved, the server responds with a failure and your browser returns an error.
