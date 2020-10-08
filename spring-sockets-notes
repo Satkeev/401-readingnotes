@@ -1,0 +1,34 @@
+#### Using WebSocket to build an interactive web application
+This guide walks you through the process of creating a “Hello, world” application that sends messages back and
+forth between a browser and a server. WebSocket is a thin, lightweight layer above TCP. This makes it suitable
+for using “subprotocols” to embed messages. In this guide, we use STOMP messaging with Spring to create an 
+interactive web application. STOMP is a subprotocol operating on top of the lower-level WebSocket.
+
+#### What You Will build
+You will build a server that accepts a message that carries a user’s name. In response, the server will push
+a greeting into a queue to which the client is subscribed.
+
+### What You Need
+About 15 minutes
+
+A favorite text editor or IDE
+JDK 1.8 or later
+Gradle 4+ or Maven 3.2+
+You can also import the code straight into your IDE:
+Spring Tool Suite (STS)
+IntelliJ IDEA
+
+### How to complete this guide
+Like most Spring Getting Started guides, you can start from scratch and complete each step or you can bypass
+basic setup steps that are already familiar to you. Either way, you end up with working code.
+To start from scratch, move on to Starting with Spring Initializr.
+To skip the basics, do the following:
+Download and unzip the source repository for this guide, or clone it using Git: 
+git clone https://github.com/spring-guides/gs-messaging-stomp-websocket.git cd into gs-messaging-stomp-websocket/initial
+Jump ahead to Create a Resource Representation Class.
+When you finish, you can check your results against the code in gs-messaging-stomp-websocket/complete.
+
+###Starting with Spring Initializr
+For all Spring applications, you should start with the Spring Initializr. The Initializr offers a fast way to pull in all 
+the dependencies you need for an application and does a lot of the set up for you. This example needs only the Websocket dependency.
+
