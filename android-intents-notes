@@ -1,54 +1,15 @@
-#### Android intents
-
-When apps are running simultaneously in a multi-windowed environment, supported in Android 7.0 (API level 24) and higher,
-the system manages tasks separately for each window; each window may have multiple tasks. The same holds true for Android
-apps running on Chromebooks: the system manages tasks, or groups of tasks, on a per-window basis.
-The device Home screen is the starting place for most tasks. When the user touches an icon in the app
-launcher (or a shortcut on the Home screen), that app's task comes to the foreground. If no task exists for the app
-(the app has not been used recently), then a new task is created and the "main" activity for that app opens
-as the root activity in the stack.
+#### Android intents When apps are running the system manages tasks separately for each window; each window may have multiple tasks. 
 When the current activity starts another, the new activity is pushed on the top of the stack and takes focus. 
 The previous activity remains in the stack, but is stopped. When an activity stops, the system retains the current
-state of its user interface. When the user presses the Back button, the current activity is popped from the top of 
-the stack (the activity is destroyed) and the previous activity resumes (the previous state of its UI is restored).
-Activities in the stack are never rearranged, only pushed and popped from the stack—pushed onto the stack when started
-by the current activity and popped off when the user leaves it using the Back button. As such, the back stack
-operates as a "last in, first out" object structure. Figure 1 visualizes this behavior with a timeline showing the
-progress between activities along with the current back stack at each point in time.
-
-#### Managing Tasks
-
-The way Android manages tasks and the back stack, as described above—by placing all activities started 
+state of its user interface. When the user presses the Back button.
+#### Managing Tasks The way Android manages tasks and the back stack, as described above—by placing all activities started 
 in succession in the same task and in a "last in, first out" stack—works great for most apps and you 
 shouldn't have to worry about how your activities are associated with tasks or how they exist in the 
-back stack. However, you might decide that you want to interrupt the normal behavior. Perhaps you want
-an activity in your app to begin a new task when it is started (instead of being placed within the
-current task); or, when you start an activity, you want to bring forward an existing instance of
-it (instead of creating a new instance on top of the back stack); or, you want your back stack 
-to be cleared of all activities except for the root activity when the user leaves the task.
-
-Using Intent flags
-When starting an activity, you can modify the default association of an activity to its task by including
+back stack. 
+Using Intent flags When starting an activity, you can modify the default association of an activity to its task by including
 flags in the intent that you deliver to startActivity(). The flags you can use to modify the default behavior are:
+FLAG_ACTIVITY_NEW_TASK,FLAG_ACTIVITY_SINGLE_TOP,FLAG_ACTIVITY_CLEAR_TOP
 
-FLAG_ACTIVITY_NEW_TASK
-Start the activity in a new task. If a task is already running for the activity you are now starting, that task 
-is brought to the foreground with its last state restored and the activity receives the new intent in onNewIntent().
-This produces the same behavior as the "singleTask" launchMode value, discussed in the previous section.
 
-FLAG_ACTIVITY_SINGLE_TOP
-If the activity being started is the current activity (at the top of the back stack), then the existing instance
-receives a call to onNewIntent(), instead of creating a new instance of the activity.
-This produces the same behavior as the "singleTop" launchMode value, discussed in the previous section.
-
-FLAG_ACTIVITY_CLEAR_TOP
-If the activity being started is already running in the current task, then instead of launching a new instance 
-of that activity, all of the other activities on top of it are destroyed and this intent is delivered to the 
-resumed instance of the activity (now on top), through onNewIntent()).
-There is no value for the launchMode attribute that produces this behavior.
-
-FLAG_ACTIVITY_CLEAR_TOP is most often used in conjunction with FLAG_ACTIVITY_NEW_TASK. When used together,
-these flags are a way of locating an existing activity in another task and putting it in a position
-where it can respond to the intent.
 
 
