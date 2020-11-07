@@ -1,72 +1,9 @@
-#### Integration testing 
-plays an important role in the application development cycle by verifying the end-to-end behavior of a system.
-In this article, we will see how we can leverage the Spring MVC test framework in order to write and run integration 
-tests that test controllers without explicitly starting a Servlet container.
-
-###Preparation
-The following Maven dependencies are needed for running integration tests as described in this article. First and foremost the latest JUnit and Spring test dependencies:
-<dependency>
-    <groupId>junit</groupId>
-    <artifactId>junit</artifactId>
-    <version>4.12</version>
-    <scope>test</scope>
-</dependency>
-<dependency>
-    <groupId>org.springframework</groupId>
-    <artifactId>spring-test</artifactId>
-    <version>4.3.2.RELEASE</version>
-    <scope>test</scope>
-</dependency>
-For effective asserting of results, we're going to also use Hamcrest and JSON path:
-
-<dependency>
-    <groupId>org.hamcrest</groupId>
-    <artifactId>hamcrest-library</artifactId>
-    <version>1.3</version>
-    <scope>test</scope>
-</dependency>
-<dependency>
-    <groupId>com.jayway.jsonpath</groupId>
-    <artifactId>json-path</artifactId>
-    <version>2.2.0</version>
-    <scope>test</scope>
-</dependency>
-
-###Spring MVC Test Configuration
-Let's now introduce how to configure and run the Spring enabled tests.
-
-3.1. Enable Spring in Tests
-First, any Spring enabled test will run with the help of @RunWith(SpringJUnit4ClassRunner.class); the runner
-is essentially the entry-point to start using the Spring Test framework.
-We also need the @ContextConfiguration annotations to load the context configuration and bootstrap the context that the test will use.
-
-@Test
-public void givenWac_whenServletContext_thenItProvidesGreetController() {
-    ServletContext servletContext = wac.getServletContext();
-    
-    Assert.assertNotNull(servletContext);
-    Assert.assertTrue(servletContext instanceof MockServletContext);
-    Assert.assertNotNull(wac.getBean("greetController"));
-}
-Notice that we're also checking that we a GreetController.java bean exists in the web context –
-which ensures that spring beans are loaded properly.
-At this point, the setup of the integration test is done. Let's see how we can test resource methods
-using the MockMvc object.
-
-### Writing Integration Tests
-
-@Test
-public void givenGreetURI_whenMockMVC_thenVerifyResponse() {
-    MvcResult mvcResult = this.mockMvc.perform(get("/greet"))
-      .andDo(print()).andExpect(status().isOk())
-      .andExpect(jsonPath("$.message").value("Hello World!!!"))
-      .andReturn();
-    
-    Assert.assertEquals("applicatin/json;charset=UTF-8", 
-      mvcResult.getResponse().getContentType());
-}
-
-
-
+#### Integration testing plays an important role in the application development
+cycle by verifying the end-to-end behavior of a system.
+Enable Spring in Tests First, any Spring enabled test will run with the help
+of @RunWith(SpringJUnit4ClassRunner.class); the runner
+is essentially the entry-point to start using the Spring Test framework. We also need
+the @ContextConfiguration annotations to load the context configuration and bootstrap 
+the context that the test will use.
 
 
