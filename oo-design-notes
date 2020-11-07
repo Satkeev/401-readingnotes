@@ -1,48 +1,8 @@
-###SOLID principles, 
-particularly if you program in object oriented languages. The wisdom contained therein (mostly) isn't
-limited to object oriented languages, but such languages were the intended target.
-If you're not familiar and don't have time to read the linked Wikipedia page, SOLID is a mnemonic
-acronym for five principles of object oriented programming or, as I hinted, really just programming
-in general (except, perhaps for the Liskov Substitution Principle). These concepts have been around
-since at least the early 2000s and have truly stood the test of time.
-What you get by following them is code that's a lot more likely to be maintainable. These design guidelines,
-properly followed, will tend to steer you toward writing clean code.
-What I'd like to do is offer real life analogs of the principles. I'd imagine that this may make them easier
-to remember, but I think it can also serve to drive the points home in the first place and help encourage 
-the "aha" moment if you haven't yet had them. 
-
-###S is for Single Responsibility Principle
-The single responsibility principle (SRP) asserts that a class or module should do one thing only. Now, 
-this is kind of subjective, so the principle is reinforced with the heuristic that the class or module
-should have only one reason to change.
-By way of counter-example, consider a class that opens a connection to the database, pulls out some table data, 
-and writes the data to a file. This class has multiple reasons to change: adoption of a new database, modified
-file output format, deciding to use an ORM, etc.  In terms of the SRP, we'd say that this class is doing too much.
-
-###O is for Open/Closed Principle
+SOLID principles, particularly if you program in object oriented languages.
+The single responsibility principle (SRP) asserts that a class or module should do one thing only.
+O is for Open/Closed Principle
 The Open/Closed Principle states that code entities should be open for extension, but closed for modification.
-To put this more concretely, you should write a class that does what it needs to flawlessly and not assuming that 
-people should come in and change it later. It's closed for modification, but it can be extended by, for instance, 
-inheriting from it and overriding or extending certain behaviors. An example of running afoul of the open-closed
-principle would be to have a switch statement somewhere that you needed to go in and add to every time you 
-wanted to add a menu option to your application.
-A great example of this in real life is sitting in your pocket in the form of a smartphone. All such phones 
-have app stores and these app stores let you extend the base functionality of the phone. Sure, it ships with 
-the basics: camera operation, actual calls, text messages, etc. But via the app store, you can extend the phone
-'s capabilities to allow you to manage your todo list, play inane video games, and even serve as a
-flashlight or wireless access point.
-The mechanism that allows you to do this is purely one of extension, however. It's not as though Apple, Google,
-and Microsoft put the OS source code up on GitHub and invite you to dive in and start building games and flashlight 
-functionality. Rather, they make the core phone functionality closed for modification and they open it to an extension.
-
-###L is for Liskov Substitution Principle
+L is for Liskov Substitution Principle
 The Liskov Substitution Principle (LSP) is the one here that is most unique to object-oriented programming. 
 The LSP says, basically, that any child type of a parent type should be able to stand in for that parent
 without things blowing up.
-In other words, if you have a class, Animal, with a MakeNoise() method, then any subclass of Animal should reasonably 
-implement MakeNoise(). Cats should meow, dogs should bark, etc. What you wouldn't do is define a MuteMouse class that
-throws IDontActuallyMakeNoiseException. This violates the LSP, and the argument would be that this class has no 
-business inheriting from Animal.
-
-To picture this, imagine cooking yourself a stew. If you're anything like me, you'd only put things in there that
-were edible because you would want to eat the stew without picking through each bite, asking yourself repeatedly, "is this edible?
