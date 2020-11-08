@@ -1,79 +1,9 @@
 #### Serverless
-the new buzzword in town has been gaining a lot of attention from the pros and the rookies in the 
-tech industry. Partly due to the manner in which cloud vendors like AWS have hyped the architecture,
-from conferences to meetups to blog posts to almost everywhere. But serverless is not just about the hype,
-it promises the possibility of ideal business implementations which sounds quite pleasant to the ears 
-and probably light on the budget as well.
-
-“Focus on your application, not the infrastructure”
-Sounds relieving though, knowing a lot of your daylight hours go into implementing, maintaining, debugging,
-and monitoring the infrastructure. With all of that infrastructure heavy lifting out of the way, we really 
-can focus on the business goals our applications serve. A lot of productive efforts could be channeled in
-the right direction, where they were meant to be ideally. Maybe it sounds too good to be true, but this
-is the way things should have been. At least for those of you who cant afford to spend a lot of time caught 
-up in the web of intricacies in modern complex infrastructure.
-Expectations apart, Serverless is really breaking ground in its path to disrupt your server infrastructure. 
-Serverless is already used in production by companies like Netflix, Reuters, AOL, and Telenor. Industry-wide
-adoption is constantly increasing. Serverless is all set to take up its own place, but don’t expect Serverless 
-to conquer your infrastructure completely. There will be use cases where serverless might prove to be the wrong choice.
-
+AWS have hyped the architecture,from conferences to meetups to blog posts to almost everywhere. 
+But serverless is not just about the hype,it promises the possibility of ideal business implementations.
+Serverless is really breaking ground in its path to disrupt your server infrastructure. 
 ### So, What is Serverless?
 Serverless is a cloud computing execution model where the cloud provider dynamically manages the allocatio
-n and provisioning of servers. A serverless application runs in stateless compute containers that 
-are event-triggered, ephemeral (may last for one invocation), and fully managed by the cloud provider.
-Pricing is based on the number of executions rather than pre-purchased compute capacity, isn’t it the 
-ideal framework for that project you have been planning since a long time? Well, go ahead do it.
-
+n and provisioning of servers.
 Serverless applications are event-driven cloud-based systems where application development rely solely
 on a combination of third-party services, client-side logic and cloud-hosted remote procedure calls 
-(Functions as a Service).
-Most of the cloud providers have invested heavily in serverless and thats a lot of money; with the given massive 
-promotion and realistic offering you can safely assume serverless to be one of the most used cloud services 
-in upcoming years. Here are some of the currently available cloud services:
-
-Use the Amplify CLI guided workflows to set up best-in-class backends for authentication, storage, APIs, and other
-common use cases in minutes. With AWS, your app scales automatically and transparently, with built-in best practices
-for security, reliability, and global availability and access to the underlying resources in the AWS console.
-Configure your AWS backend »
-Easily connect to your app
-Use Amplify Libraries to connect new or existing cloud backends to your mobile and web app. Supports Android, iOS, React
-, Flutter and more. Add features such as auth (Amazon Cognito), storage (Amazon S3), data, AI/ML, or analytics to build 
-custom login experiences, real-time applications, targeted campaigns, and more, in just a few lines of code.
-Get started with Amplify »
-Deploy web apps in three steps
-Use Amplify Console to deploy and host scalable static websites and single page web apps with a Git-based workflow. 
-Supports React, Gatsby, Vue and other popular frameworks. In the AWS console, simply connect your app's repository
-and changes to your front end and backend are automatically deployed on every single code commit.
-Connect your repository »
-
-#### Amplify Framework
-The Amplify Framework consists of 3 components including libraries, UI components, and a CLI toolchain. Components 
-can be used together or on their own. Organized by use case, Amplify Libraries and UI components are powered by
-AWS services. They are open source and work with your existing front-end frameworks (React, React Native, Angular, 
-Vue, Ionic) and iOS/Android IDEs. The Amplify Command Line Interface (CLI) is a toolchain to create and maintain
-serverless backends on AWS. Configure cloud functionality by following a simple, interactive workflow for 
-specifying app capabilities, including the data model and auth requirements. Develop your App »
-Authentication
-User registration & authentication
-DataStore
-Offline synchronization & conflict resolution
-API (GraphQL and REST)
-Access data from multiple data sources
-Storage
-Manage user content
-Analytics
-Collect analytics data for your app
-Predictions
-AI/ML including text translations
-Interactions
-Create conversational chatbots
-Push Notifications
-Send targeted communications
-PubSub
-Manage messaging & subscriptions
-Static web hosting
-AWS Amplify Console is a static web hosting service that accelerates your application release cycle by providing
-a simple CI/CD workflow for building and deploying static web applications. Simply connect your application's code
-repository in the console, and changes to your frontend and backend are deployed in a single workflow on every code commit
-. A fullstack app consists of a frontend built with single page application frameworks such as React, Angular, Vue,
-or Gatsby and an optional backend built with cloud resources such as GraphQL or REST APIs, file and data storage.
