@@ -1,0 +1,13 @@
+In Android Studio when your app can perform some actions that might be useful from another app,
+your app should be prepared to respond to action requests by specifying the appropriate intent
+filter in your activity. In cases, when users initiate a "share" action from another app, your
+app appears as an option in the chooser dialog. For define which intents your activity can handle, 
+each intent filter you add should be as specific as possible in terms of the type of action and
+data the activity accepts. A string naming the action to perform. Usually one of the platform-defined
+values such as ACTION_SEND or ACTION_VIEW. We can specify this in your intent filter with the <data> element.
+Provides an additional way to characterize the activity handling the intent, usually related to the user
+gesture or location from which it's started. There are several different categories supported by the system,
+but most are rarely used. Then, in order to decide what action to take in your activity, you can read the 
+Intent was used to start it. Finally, If you want to return a result to the activity that invoked yours, 
+simply call setResults() to specify the result code and result Intent. 
+
