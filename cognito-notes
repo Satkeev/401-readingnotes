@@ -1,8 +1,9 @@
-##### Amplify
-The Amplify Auth category rovides the necessary authorization to the other Amplify categories. It comes with default,
-built-in support for Amazon Cognito User Pool and Identity Pool. 
-### Goal To setup and configure your application with Amplify Auth and go through a simple api to check the current auth session
-#### Prerequisites An Android application targeting at least Android SDK API level 16 with Amplify libraries integrated
-Configure Auth Category To start provisioning auth resources in the backend, go to your project directory and execute the command:
--amplify add auth
--amplify push
+#### Cognito
+Sign in succeeded, It means that we successfully registered a user and authenticated with that user’s username and password with Amplify.
+Multi-factor authentication Some steps in setting up multi-factor authentication can only 
+Configure Auth Category
+In terminal, navigate to your project, run amplify add auth (or if you’ve already added it, run amplify update auth), and choose the following options:
+Once finished, run amplify push to publish your changes.
+Update AndroidManifest.xml
+
+
