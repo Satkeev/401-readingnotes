@@ -15,19 +15,7 @@ Anatomy of a Unit Test
 Let’s do a brief post-mortem in the form of looking at the bits and pieces of this test.  But first, 
 let’s do a bit of renaming.
 
-[TestClass]
-public class CalculatorTests
-{
-    [TestMethod]
-    public void Adding_4_And_3_Should_Return_7()
-    {
-        var calculator = new Calculator();
 
-        int result = calculator.Add(4, 3);
-
-        Assert.AreEqual(7, result);
-    }
-}
 First off, we have a class called “CalculatorTests,” indicating that it will contain tests for the calculator
 class.  (Other ways to conceptually organize your tests exist but consider that an advanced topic.)  It gets 
 an attribute called “TestClass” to tell Visual Studio’s default test runner and framework, MSTest, that this
@@ -38,16 +26,6 @@ xUnit.net is a free, open source, community-focused unit testing tool for the .N
 original inventor of NUnit v2, xUnit.net is the latest technology for unit testing C#, F#, VB.NET and other 
 .NET languages. xUnit.net works with ReSharper, CodeRush, TestDriven.NET and Xamarin. It is part of the .NET
 Foundation, and operates under their code of conduct. It is licensed under Apache 2 (an OSI approved license).
-Unit Test Parallelism
-Running tests in parallel
-Sharing context between tests (class and collection fixtures)
-Other Topics
-Sample projects (including testing and extensibility)
-Capturing output
-Running tests in MSBuild
-Getting Test Results in TeamCity
-Getting Test Results in CruiseControl.NET
-Getting Test Results in Azure DevOps
 
 ### Where does the term "README" come from?
 
@@ -67,9 +45,3 @@ The README: Your one-stop shop
 A README is a module consumer's first -- and maybe only -- look into your creation. The consumer wants
 a module to fulfill their need, so you must explain exactly what need your module fills, and how effectively it does so.
 
-Your job is to
-
-tell them what it is (with context)
-show them what it looks like in action
-show them how they use it
-tell them any other relevant details
