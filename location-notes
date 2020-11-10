@@ -1,0 +1,4 @@
+Android Studio can use Google services for define users locations. And when our app
+connected to Location services we can use getLastLocation method and can retrieve 
+device location(latitude, longitude)
+Then we can update location and check another parameters like weather with related location.
